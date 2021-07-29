@@ -1,0 +1,56 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainMaster.master.cs" Inherits="PuntosCargaDinamicos.MainMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+         <nav class="navbar navbar-expand-lg navbar-dark bg-success bg-gradient m-3 " >
+            <div class="container-fluid">
+                <a class="navbar-brand m-lg-3 h4" href="Default.aspx">Bienvenido a la Estacion de Servicio Inteligente</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav navbar-brand h4 ">
+                     <li class="nav-item dropdown h4">
+                      <a class="nav-link dropdown-toggle ms-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Estaciona de Servicio
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li class="m-3"><a class="dropdown-item" href="AgregarEstacionServicio.aspx">Agregar Estacion de Servicio </a></li>
+                        <li class="m-3"><a class="dropdown-item" href="VerEstacionesServicio.aspx">Ver las Estaciones </a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item dropdown h4">
+                      <a class="nav-link dropdown-toggle ms-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Puntos de Carga
+                      </a>
+                      <ul class="dropdown-menu h-10" aria-labelledby="navbarDropdown">
+                        <li class="m-3"><a class="dropdown-item" href="AgregarPuntoCarga.aspx">Agregar Punto de Sercivio </a></li>
+                        <li class="m-3"><a class="dropdown-item" href="VerPuntoCarga.aspx">Ver los Puntos de Servicio</a></li>
+                      </ul>
+                    </li>
+                </div>
+             
+            </div>
+          </div>
+        </nav>
+    </header>
+    <main class="container-fluid">
+        <form id="form1" runat="server">
+         
+               <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+          
+        </form>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
+

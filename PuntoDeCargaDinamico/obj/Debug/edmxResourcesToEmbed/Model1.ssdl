@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EstacionServicioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EstacionServicio">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="NumeroDePuntos" Type="int" Nullable="false" />
+    <Property Name="Region" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CodigoRegion" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="PuntoCarga">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CapacidadAutos" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CodigoTipo" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Tipo">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <Association Name="fk_estacion_region">
+    <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+    <End Role="EstacionServicio" Type="Self.EstacionServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="EstacionServicio">
+        <PropertyRef Name="CodigoRegion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_punto_tipo">
+    <End Role="Tipo" Type="Self.Tipo" Multiplicity="0..1" />
+    <End Role="PuntoCarga" Type="Self.PuntoCarga" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="PuntoCarga">
+        <PropertyRef Name="CodigoTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EstacionServicioModelStoreContainer">
+    <EntitySet Name="EstacionServicio" EntityType="Self.EstacionServicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PuntoCarga" EntityType="Self.PuntoCarga" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_estacion_region" Association="Self.fk_estacion_region">
+      <End Role="Region" EntitySet="Region" />
+      <End Role="EstacionServicio" EntitySet="EstacionServicio" />
+    </AssociationSet>
+    <AssociationSet Name="fk_punto_tipo" Association="Self.fk_punto_tipo">
+      <End Role="Tipo" EntitySet="Tipo" />
+      <End Role="PuntoCarga" EntitySet="PuntoCarga" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
